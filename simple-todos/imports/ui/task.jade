@@ -1,0 +1,7 @@
+//output: task.html
+
+template(name='task')
+	li(class='{{#if checked}}checked{{/if}}') 
+		button.delete &times;
+		input.toggle-checked(type='checkbox' checked='{{checked}}')
+		span.text {{text}}
