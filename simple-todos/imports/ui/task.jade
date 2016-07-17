@@ -1,7 +1,19 @@
 //output: task.html
 
 template(name='task')
-	li(class='{{#if checked}}checked{{/if}}') 
+	li(class='{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}') 
 		button.delete &times;
 		input.toggle-checked(type='checkbox' checked='{{checked}}')
-		span.text {{text}}
+
+		{{#if isOwner}}
+		button.toggle-private
+			|{{#if private}}
+			|	Private
+			|{{else}}
+			|	Public
+			|{{/if}}
+		{{/if}}
+
+		span.text
+			strong {{username}} 
+			|- {{text}}

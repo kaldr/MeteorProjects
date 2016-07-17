@@ -1,23 +1,23 @@
 
+import {Meteor} from 'meteor/meteor'
 import { Template } from 'meteor/templating'
 import { Tasks } from '../api/tasks.js'
 import './task.html'
 ;
 Template.task.helpers({
-  create: function() {},
-  rendered: function() {},
-  destroyed: function() {}
+  isOwner: function() {
+    return this.owner === Meteor.userId();
+  }
 });
 
 Template.task.events({
   "click .toggle-checked": function(event, template) {
-    return Tasks.update(this._id, {
-      $set: {
-        checked: !this.checked
-      }
-    });
+    return Meteor.call('tasks.setChecked', this._id, !this.checked);
   },
   'click .delete': function() {
-    return Tasks.remove(this._id);
+    return Meteor.call('tasks.remove', this._id);
+  },
+  "click .toggle-private": function() {
+    return Meteor.call("tasks.setPrivate", this._id, !this["private"]);
   }
 });
