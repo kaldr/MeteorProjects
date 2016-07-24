@@ -29,6 +29,8 @@ CalendarFilter = (function(superClass) {
 
 })(Filter);
 
+CalendarFilter.$name = 'calendar';
+
 
 export default CalendarFilter
 ;

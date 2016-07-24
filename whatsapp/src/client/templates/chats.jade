@@ -2,9 +2,13 @@
 ion-view(view-title="Chats")
   ion-content
     ion-list
-      ion-item.item-chat.item-remove-animate.item-avatar.item-icon-right(ng-repeat="chat in chats.data|orderBy:'-lastMessage.timestamp'" type='item-text-wrap')
+      ion-item.item-chat.item-remove-animate.item-avatar.item-icon-right(
+        ng-repeat="chat in chats.data|orderBy:'-lastMessage.timestamp'" 
+        type='item-text-wrap' 
+        href='#/tab/chats/{{chat._id}}')
         img(ng-src="{{chat.picture}}")
         h2 {{chat.name}}
         p {{chat.lastMessage.text}}
         span.last-message-timestamp {{chat.lastMessage.timestamp | calendar}}
-        i.ion.ion-chevron-right.icon-accesory
+        i.icon.ion-chevron-right.icon-accessory
+        ion-option-button.button-assertive(ng-click='chats.remove(chat)') Delete

@@ -9,6 +9,7 @@ import Loader from 'angular-ecmascript/module-loader'
 import { Meteor } from 'meteor/meteor';
 
 import ChatsCtrl from "../controllers/chats.controller"
+import ChatCtrl from '../controllers/chat.controller'
 import CalendarFilter from '../filters/calendar.filter'
 import RoutesConfig from '../routes'
 ;
@@ -16,9 +17,9 @@ var App, onReady;
 
 App = "Whatsapp";
 
-Angular.module(App, ['angular-meteor', 'ui.router', 'ionic']);
+Angular.module(App, ['angular-meteor', 'ionic']);
 
-new Loader(App).load(ChatsCtrl).load(CalendarFilter).load(RoutesConfig);
+new Loader(App).load(ChatsCtrl).load(ChatCtrl).load(CalendarFilter).load(RoutesConfig);
 
 onReady = function() {
   return Angular.bootstrap(document, [App]);
