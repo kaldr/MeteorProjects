@@ -5,13 +5,14 @@ import {Filter} from 'angular-ecmascript/module-helpers'
 class CalendarFilter extends Filter
     filter:(time)->
         if !time
-            return
+          return
         Moment time
         .calendar null,
             lastDay:'[Yesterday]'
             sameDay:'LT'
             lastWeek:'dddd'
             sameElse:"DD/MM/YY"
+CalendarFilter.$name='calendar'
 `
 export default CalendarFilter
 `

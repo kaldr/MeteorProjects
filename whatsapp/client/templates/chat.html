@@ -1,0 +1,15 @@
+
+<ion-view title="{{chat.data.name}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear"><img ng-src="{{chat.data.picture}}" class="header-picture"/></button>
+  </ion-nav-buttons>
+  <ion-content delegate-handle="chatScroll" class="chat">
+    <div class="message-list">
+      <div ng-repeat="message in chat.messages" class="message-wrapper">
+        <div ng-class-even="'message-mine'" ng-class-odd="'message-other'" class="message">
+          <div class="message-text">{{message.text}}</div><span class="message-timestamp">{{message.timestamp}}</span>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
