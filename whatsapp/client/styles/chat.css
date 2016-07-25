@@ -8,7 +8,7 @@
 .chat {
   background-image: url("/chat-background.jpg");
   background-color: #e0dad6;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: 100%;
 }
 .message-list {
@@ -18,7 +18,7 @@
 .message-wrapper {
   margin-bottom: 9px;
 }
-.message-wrapper::after {
+.message-wrapper:after {
   content: "";
   display: table;
   clear: both;
@@ -38,8 +38,8 @@
   float: left;
   background-color: #fff;
 }
-.message.message-other::before,
-.message.message-mine::before {
+.message.message-other:before,
+.message.message-mine:before {
   content: "";
   position: absolute;
   bottom: 3px;
@@ -49,11 +49,11 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
-.message.message-other::before {
+.message.message-other:before {
   left: -11px;
   background-image: url("/message-other.png");
 }
-.message.message-mine::before {
+.message.message-mine:before {
   right: -11px;
   background-image: url("/message-mine.png");
 }
@@ -61,7 +61,7 @@
   padding: 5px 7px;
   word-wrap: break-word;
 }
-.message .message-text::after {
+.message .message-text:after {
   content: " \00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
   display: inline;
 }
@@ -71,4 +71,15 @@
   right: 7px;
   color: #808080;
   font-size: 12px;
+}
+.footer-chat .item-input-wrapper {
+  background-color: #fff;
+}
+.footer-chat .button.button-icon {
+  margin: 0 10px;
+}
+.footer-chat .buttons-seperator {
+  color: #808080;
+  font-size: 18px;
+  line-height: 32px;
 }

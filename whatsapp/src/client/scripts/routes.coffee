@@ -20,8 +20,20 @@ class RoutesConfig extends Config
                 'tab-chats':
                     templateUrl:'client/templates/chat.html'
                     controller:"ChatCtrl as chat"
+        .state 'login',
+            url:'/login'
+            templateUrl:'client/templates/login.html'
+            controller:'LoginCtrl as logger'
+        .state 'confirmation',
+            url:"/confirmation/:phone"
+            templateUrl:'client/templates/confirmation.html'
+            controller:'ConfirmationCtrl as confirmation'
+        .state 'profile',
+            url:'/profile'
+            templateUrl:'client/templates/profile.html'
+            controller:"ProfileCtrl as profile"
         this.$urlRouterProvider.otherwise 'tab/chats'
-RoutesConfig.$inject = ["$stateProvider","$urlRouterProvider"]
+RoutesConfig.$inject=["$stateProvider","$urlRouterProvider"]
 `
 export default RoutesConfig
 `

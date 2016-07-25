@@ -1,0 +1,9 @@
+//output:../../../client/templates/login.html
+ion-view(title='Your phone number')
+  ion-nav-buttons(side='right')
+    button.button.button-clear.button-positive(ng-click='logger.login()' ng-disabled='!logger.phone||logger.phone.length') Done
+  ion-content.login
+    .text-center.instructions Please confirm your country code and enter your phone number
+    .list
+      label.item.item-input
+        input(ng-model='logger.phone' on-return='logger.login()' type='text' placeholder="your phone number")

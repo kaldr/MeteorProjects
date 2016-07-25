@@ -1,21 +1,49 @@
 `
+import Ionic from 'ionic-scripts'
+import {_} from 'meteor/underscore'
+import {Meteor} from 'meteor/meteor'
 import {Controller} from 'angular-ecmascript/module-helpers'
 import {Chats,Messages} from '../../../lib/collections'
 `
 class ChatCtrl extends Controller
-  constructor:()->
-    console.log this.$stateProvider
+    constructor:(@arguments...)->
+        super @arguments...
+        this.chatId=this.$stateParams.chatId
+        this.isIOS=Ionic.Platform.isWebView() && Ionic.Platform.isIOS()
+        this.isCordova=Meteor.isCordova
 
-    console.log this.$state
-    console.log this.$stateParams
-    super @arguments
-    this.chatId=this.$stateParams.chatId
-    this.helpers
-      data:()->Chats.findOne this.chatId
-      messages:()->Messages.find
-        chatId:this.chatId
-    true
-ChatCtrl.$inject = ['$state','$stateParams']
+        this.helpers
+            data:()->Chats.findOne this.chatId
+            messages:()->Messages.find
+                chatId:this.chatId
+
+    sendMessage:()->
+        if _.isEmpty this.message
+            return
+        this.callMethod 'newMessage',
+            text:this.message
+            type:'text'
+            chatId:this.chatId
+        delete this.message
+
+    inputUp:()->
+        if this.isIOS
+            this.keyboardHeight=216
+        this.scrollBottom true
+    inputDown:()->
+        if this.isIOS
+            this.keyboardHeight=0
+        this.$ionicScrollDelegate.$getByHandle 'chatScroll'
+        .resize()
+    closeKeyboard:()->
+        if this.isCordova
+            cordova.plugins.Keyboard.close()
+    scrollBottom:(animate)->
+        this.$timeout ()=>
+            this.$ionicScrollDelegate.$getByHandle 'chatScroll'
+            .scrollBottom animate
+        ,300
 `
 export default ChatCtrl
 `
+ChatCtrl.$inject = ['$stateParams','$timeout',"$ionicScrollDelegate"]

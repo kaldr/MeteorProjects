@@ -8,4 +8,20 @@ ion-view(title='{{chat.data.name}}')
       .message-wrapper(ng-repeat='message in chat.messages')
         .message(ng-class-even="'message-mine'" ng-class-odd="'message-other'")
           .message-text {{message.text}}
-          span.message-timestamp {{message.timestamp}}
+          span.message-timestamp {{message.timestamp|amDateFormat:"HH:MM"}}
+  ion-footer-bar.bar-stable.footer-chat.item-input-inset(keyboard-attach)
+    button.button.button-clear.button-icon.button-positive.icon.ion-ios-upload-outline
+    label.item-input-wrapper
+      input(
+        ng-model='chat.message'
+        dir='auto'
+        type='text'
+        on-return="chat.sendMessage();chat.closeKeyboard()"
+        on-focus="chat.inputUp()"
+        on-blur="chat.inputDown()")
+    span(ng-if="chat.message.length>0")
+      button.button.button-clear.button-positive(ng-click="chat.sendMessage()") Send
+    span(ng-if="!chat.message||chat.message.length===0")
+      button.button.button-clear.button-icon.button-positive.icon.ion-ios-camera-outline
+      i.button-seperator.icon.ion-android-more-vertical
+      button.button.button-clear.button-icon.button-positive.icon.ion-ios-mic-outline
