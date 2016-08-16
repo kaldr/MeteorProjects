@@ -1,3 +1,2 @@
-`import {Mongo} from 'meteor/mongo'`
-Parties=new Mongo.Collection 'parties'
-`export default Parties`
+{Mongo}=require 'meteor/mongo'
+exports.Parties = new Mongo.Collection('parties');

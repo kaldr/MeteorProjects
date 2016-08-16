@@ -1,13 +1,19 @@
+var Parties, PartiesListCtrl, angular, angularMeteor;
 
-import angular from 'angular';
-import angularMeteor from 'angular-meteor';
-import Loader from 'angular-ecmascript/module-loader'
-import PartiesListCtrl from './scripts/controllers/PartiesList.controller'
-;
-var App;
+angular = require('angular');
 
-App = 'socially';
+angularMeteor = require('angular-meteor');
 
-angular.module(App, [angularMeteor]);
+Parties = require('../collections/parties.js').Parties;
 
-new Loader(App).load(PartiesListCtrl);
+PartiesListCtrl = function($scope, $reactive) {
+  'ngInject';
+  $reactive(this).attach($scope);
+  return this.helpers({
+    parties: function() {
+      return Parties.find();
+    }
+  });
+};
+
+angular.module('socially', [angularMeteor]).controller('PartiesListCtrl', PartiesListCtrl);

@@ -1,6 +1,5 @@
-import {Mongo} from 'meteor/mongo';
-var Parties;
+var Mongo;
 
-Parties = new Mongo.Collection('parties');
+Mongo = require('meteor/mongo').Mongo;
 
-export default Parties;
+exports.Parties = new Mongo.Collection('parties');
