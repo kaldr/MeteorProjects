@@ -1,10 +1,10 @@
-
-import Moment from 'moment'
-import {Filter} from 'angular-ecmascript/module-helpers'
-;
-var CalendarFilter,
+var CalendarFilter, Filter, Moment,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
+
+Moment = require('moment');
+
+Filter = require('angular-ecmascript/module-helpers').Filter;
 
 CalendarFilter = (function(superClass) {
   extend(CalendarFilter, superClass);
@@ -31,6 +31,4 @@ CalendarFilter = (function(superClass) {
 
 CalendarFilter.$name = 'calendar';
 
-
-export default CalendarFilter
-;
+exports.CalendarFilter = CalendarFilter;

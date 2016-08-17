@@ -1,7 +1,5 @@
-`
-import {Meteor} from 'meteor/meteor'
-import {Chats,Messages} from '/lib/collections'
-`
+{ Meteor } = require 'meteor/meteor'
+{Chats,Messages} = require "/lib/collections"
 Meteor.methods
     newMessage:(message) =>
         check message,

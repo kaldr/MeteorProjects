@@ -1,8 +1,8 @@
-`
-import Moment from 'moment'
-import {Controller} from 'angular-ecmascript/module-helpers'
-import {Chats} from '../../../lib/collections'
-`
+
+Moment = require 'moment'
+{Controller} = require 'angular-ecmascript/module-helpers'
+{Chats} = require '../../../lib/collections'
+
 class ChatsCtrl extends Controller
     constructor:(@arguments)->
         super(@arguments)
@@ -10,6 +10,5 @@ class ChatsCtrl extends Controller
           data:()->Chats.find()
     remove:(chat)->
       Chats.remove chat._id;
-`
-export default ChatsCtrl
-`
+
+exports.ChatsCtrl=ChatsCtrl

@@ -1,9 +1,8 @@
-
-import {Config} from 'angular-ecmascript/module-helpers'
-;
-var RoutesConfig,
+var Config, RoutesConfig,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
+
+Config = require('angular-ecmascript/module-helpers').Config;
 
 RoutesConfig = (function(superClass) {
   extend(RoutesConfig, superClass);
@@ -55,6 +54,4 @@ RoutesConfig = (function(superClass) {
 
 RoutesConfig.$inject = ["$stateProvider", "$urlRouterProvider"];
 
-
-export default RoutesConfig
-;
+exports.RoutesConfig = RoutesConfig;

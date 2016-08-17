@@ -1,8 +1,3 @@
-`
-import {Mongo} from 'meteor/mongo'
-`
-
-`
-export const Chats=new Mongo.Collection("chats");
-export const Messages=new Mongo.Collection("messages");
-`
+{ Meteor } = require 'meteor/meteor'
+exports.Chats=new Mongo.Collection("chats");
+exports.Messages=new Mongo.Collection("messages");

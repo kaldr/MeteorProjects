@@ -1,4 +1,4 @@
-`import {Directive} from 'angular-ecmascript/module-helpers';`
+{Directive} = require 'angular-ecmascript/module-helpers'
 class InputDirective extends Directive
     constructor:(@arguments...)->
         super @arguments...
@@ -31,4 +31,4 @@ class InputDirective extends Directive
                     scope.onReturn()
 InputDirective.$name='input'
 InputDirective.$inject=["$timeout"]
-`export default InputDirective`
+exports.InputDirective=InputDirective

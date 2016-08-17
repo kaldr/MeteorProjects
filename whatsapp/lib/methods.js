@@ -1,7 +1,9 @@
+var Chats, Messages, Meteor, ref;
 
-import {Meteor} from 'meteor/meteor'
-import {Chats,Messages} from '/lib/collections'
-;
+Meteor = require('meteor/meteor').Meteor;
+
+ref = require("/lib/collections"), Chats = ref.Chats, Messages = ref.Messages;
+
 Meteor.methods({
   newMessage: (function(_this) {
     return function(message) {

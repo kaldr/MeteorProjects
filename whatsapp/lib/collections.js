@@ -1,8 +1,7 @@
+var Meteor;
 
-import {Mongo} from 'meteor/mongo'
-;
+Meteor = require('meteor/meteor').Meteor;
 
-export const Chats=new Mongo.Collection("chats");
-export const Messages=new Mongo.Collection("messages");
-;
+exports.Chats = new Mongo.Collection("chats");
 
+exports.Messages = new Mongo.Collection("messages");

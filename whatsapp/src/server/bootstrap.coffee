@@ -1,8 +1,8 @@
-`
-import Moment from 'moment'
-import {Meteor} from 'meteor/meteor'
-import {Chats,Messages} from '../lib/collections'
-`
+
+Moment = require 'moment'
+{ Meteor } = require 'meteor/meteor'
+{Chats,Messages} = require "../lib/collections"
+
 Meteor.startup ->
 	if Chats.find().count() != 0
 		return

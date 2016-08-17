@@ -1,21 +1,19 @@
-`
-import 'angular-animate'
-import 'angular-meteor'
-import 'angular-meteor-auth'
-import 'angular-moment'
-import 'angular-sanitize'
-import 'angular-ui-router'
-import 'ionic-scripts'
-import Angular from 'angular'
-import Loader from 'angular-ecmascript/module-loader'
-import { Meteor } from 'meteor/meteor'
+require 'angular-animate'
+require 'angular-meteor'
+require 'angular-meteor-auth'
+require 'angular-moment'
+require 'angular-sanitize'
+require 'angular-ui-router'
+require 'ionic-scripts'
+Angular = require 'angular'
+Loader = require 'angular-ecmascript/module-loader'
+{ Meteor } = require 'meteor/meteor'
+ChatsCtrl = require "../controllers/chats.controller"
+ChatCtrl = require '../controllers/chat.controller'
+InputDirective = require '../directives/input.directive'
+CalendarFilter = require '../filters/calendar.filter'
+RoutesConfig = require '../routes'
 
-import ChatsCtrl from "../controllers/chats.controller"
-import ChatCtrl from '../controllers/chat.controller'
-import InputDirective from '../directives/input.directive'
-import CalendarFilter from '../filters/calendar.filter'
-import RoutesConfig from '../routes'
-`
 App="Whatsapp"
 Angular.module App,[
     'angular-meteor'

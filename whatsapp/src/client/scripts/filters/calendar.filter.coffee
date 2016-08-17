@@ -1,7 +1,7 @@
-`
-import Moment from 'moment'
-import {Filter} from 'angular-ecmascript/module-helpers'
-`
+
+Moment = require 'moment'
+{Filter} = require 'angular-ecmascript/module-helpers'
+
 class CalendarFilter extends Filter
     filter:(time)->
         if !time
@@ -13,6 +13,5 @@ class CalendarFilter extends Filter
             lastWeek:'dddd'
             sameElse:"DD/MM/YY"
 CalendarFilter.$name='calendar'
-`
-export default CalendarFilter
-`
+
+exports.CalendarFilter=CalendarFilter

@@ -1,6 +1,5 @@
-`
-import {Config} from 'angular-ecmascript/module-helpers'
-`
+{Config} = require 'angular-ecmascript/module-helpers'
+
 class RoutesConfig extends Config
     configure:()->
         this.$stateProvider
@@ -34,6 +33,5 @@ class RoutesConfig extends Config
             controller:"ProfileCtrl as profile"
         this.$urlRouterProvider.otherwise 'tab/chats'
 RoutesConfig.$inject=["$stateProvider","$urlRouterProvider"]
-`
-export default RoutesConfig
-`
+
+exports.RoutesConfig = RoutesConfig

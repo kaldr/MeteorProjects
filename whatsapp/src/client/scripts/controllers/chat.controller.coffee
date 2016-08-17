@@ -1,10 +1,10 @@
-`
-import Ionic from 'ionic-scripts'
-import {_} from 'meteor/underscore'
-import {Meteor} from 'meteor/meteor'
-import {Controller} from 'angular-ecmascript/module-helpers'
-import {Chats,Messages} from '../../../lib/collections'
-`
+
+Ionic = require 'ionic-scripts'
+{_} = require 'meteor/underscore'
+{Meteor} = require 'meteor/meteor'
+{Controller} = require 'angular-ecmascript/module-helpers'
+{Chats,Messages} = require '../../../lib/collections'
+
 class ChatCtrl extends Controller
     constructor:(@arguments...)->
         super @arguments...
@@ -43,7 +43,6 @@ class ChatCtrl extends Controller
             this.$ionicScrollDelegate.$getByHandle 'chatScroll'
             .scrollBottom animate
         ,300
-`
-export default ChatCtrl
-`
+
+exports.ChatCtrl=ChatCtrl
 ChatCtrl.$inject = ['$stateParams','$timeout',"$ionicScrollDelegate"]

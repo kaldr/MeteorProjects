@@ -1,8 +1,11 @@
+var Chats, Messages, Meteor, Moment, ref;
 
-import Moment from 'moment'
-import {Meteor} from 'meteor/meteor'
-import {Chats,Messages} from '../lib/collections'
-;
+Moment = require('moment');
+
+Meteor = require('meteor/meteor').Meteor;
+
+ref = require("../lib/collections"), Chats = ref.Chats, Messages = ref.Messages;
+
 Meteor.startup(function() {
   var chats, messages;
   if (Chats.find().count() !== 0) {

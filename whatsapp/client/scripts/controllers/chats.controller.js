@@ -1,11 +1,12 @@
-
-import Moment from 'moment'
-import {Controller} from 'angular-ecmascript/module-helpers'
-import {Chats} from '../../../lib/collections'
-;
-var ChatsCtrl,
+var Chats, ChatsCtrl, Controller, Moment,
   extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
   hasProp = {}.hasOwnProperty;
+
+Moment = require('moment');
+
+Controller = require('angular-ecmascript/module-helpers').Controller;
+
+Chats = require('../../../lib/collections').Chats;
 
 ChatsCtrl = (function(superClass) {
   extend(ChatsCtrl, superClass);
@@ -28,6 +29,4 @@ ChatsCtrl = (function(superClass) {
 
 })(Controller);
 
-
-export default ChatsCtrl
-;
+exports.ChatsCtrl = ChatsCtrl;
