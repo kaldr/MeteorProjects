@@ -26,7 +26,7 @@ if Meteor.isServer
               }]
           }
         ]
-    if typeof searchStirng =='string' and searchString.length
+    if typeof searchString =='string' and searchString.length
       selector.name={
         $regex:///.*${searchString}.*///,
         $options:'i'

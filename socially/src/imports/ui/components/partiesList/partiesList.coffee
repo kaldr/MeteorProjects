@@ -37,6 +37,7 @@ class PartiesListCtrl
         partiesCount:->Counts.get 'numberOfParties'
       }
     pageChanged:(newPage)->this.page=newPage
+    sortChanged:(sort)->this.sort=sort
 
 config=($stateProvider)->
   'ngInject'

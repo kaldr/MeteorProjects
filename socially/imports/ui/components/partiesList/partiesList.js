@@ -35,7 +35,7 @@ PartiesListCtrl = (function() {
         skip: parseInt((this.getReactively('page') - 1) * this.perPage),
         sort: this.getReactively('sort')
       }, this.getReactively('searchText')
-    ]);;
+    ]);
     this.helpers({
       parties: function() {
         return Parties.find({}, {
@@ -50,6 +50,10 @@ PartiesListCtrl = (function() {
 
   PartiesListCtrl.prototype.pageChanged = function(newPage) {
     return this.page = newPage;
+  };
+
+  PartiesListCtrl.prototype.sortChanged = function(sort) {
+    return this.sort = sort;
   };
 
   return PartiesListCtrl;
