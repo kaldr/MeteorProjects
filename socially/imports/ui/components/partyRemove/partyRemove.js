@@ -6,7 +6,7 @@ angularMeteor = require('angular-meteor');
 
 import template from './partyRemove.html';
 
-Parties = require('../../../api/parties').Parties;
+Parties = require('../../../api/parties/index').Parties;
 
 PartyRemoveCtrl = (function() {
   function PartyRemoveCtrl() {}

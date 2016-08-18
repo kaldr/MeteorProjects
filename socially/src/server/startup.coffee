@@ -1,5 +1,5 @@
 {Meteor}=require 'meteor/meteor'
-{Parties}=require '../imports/api/parties.js'
+{Parties}=require '../imports/api/parties/index'
 Meteor.startup ()=>
     if Parties.find().count()==0
         parties= [{

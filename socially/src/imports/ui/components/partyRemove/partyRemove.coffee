@@ -1,7 +1,7 @@
 angular=require 'angular'
 angularMeteor=require 'angular-meteor'
 `import template from './partyRemove.html'`
-{Parties}=require '../../../api/parties'
+{Parties}=require '../../../api/parties/index'
 class PartyRemoveCtrl
   remove:->
     if this.party

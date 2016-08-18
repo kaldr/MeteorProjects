@@ -1,14 +1,19 @@
 angular=require 'angular'
+{Meteor}=require 'meteor/meteor'
 angularMeteor=require 'angular-meteor'
-{Parties}=require '../../../api/parties'
+{Parties}=require '../../../api/parties/index'
 `import template from './partyAdd.html'`
 
 class PartyAddCtrl
-  constructor:->
+  constructor:()->
     this.party={}
   submit:->
-    Parties.insert this.party
-    this.reset()
+    if Meteor.user()
+      this.party.owner=Meteor.user()._id
+      Parties.insert this.party
+      this.reset()
+    else
+      console.log "Not login"
   reset:->
     this.party={}
 

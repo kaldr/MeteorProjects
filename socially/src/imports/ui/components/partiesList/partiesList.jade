@@ -2,6 +2,6 @@
 party-add
 ul
   li(ng-repeat="party in partiesList.parties")
-    {{party.name}}
+    a(ui-sref='partyDetail({partyId:party._id})') {{party.name}}
     p {{party.description}}
     party-remove(party='party')

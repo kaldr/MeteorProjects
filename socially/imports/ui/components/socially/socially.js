@@ -1,4 +1,4 @@
-var Navigation, PartiesList, SociallyCtrl, angular, angularMeteor, config, name, uiRouter;
+var Navigation, PartiesList, PartyDetail, SociallyCtrl, angular, angularMeteor, config, name, run, uiRouter;
 
 angular = require('angular');
 
@@ -9,6 +9,8 @@ uiRouter = require('angular-ui-router');
 PartiesList = require('../partiesList/partiesList').PartiesList;
 
 Navigation = require('../navigation/navigation').Navigation;
+
+PartyDetail = require('../partyDetail/partyDetail').PartyDetail;
 
 
 import template from './socially.html'
@@ -29,8 +31,19 @@ config = function($locationProvider, $urlRouterProvider) {
   return $urlRouterProvider.otherwise('/parties');
 };
 
-exports.Socially = angular.module(name, [angularMeteor, uiRouter, Navigation, PartiesList]).component(name, {
+run = function($rootScope, $state) {
+  'ngInject';
+  return $rootScope.$on('$stateChangeError', (function(_this) {
+    return function(event, toState, toParams, fromState, fromParams, error) {
+      if (error === "AUTH_REQUIRED") {
+        return $state.go('parties');
+      }
+    };
+  })(this));
+};
+
+exports.Socially = angular.module(name, [angularMeteor, uiRouter, Navigation, 'accounts.ui', PartyDetail, PartiesList]).component(name, {
   templateUrl: template,
   controllerAs: name,
   controller: SociallyCtrl
-}).config(config).name;
+}).config(config).run(run).name;

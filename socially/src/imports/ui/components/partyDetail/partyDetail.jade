@@ -1,0 +1,17 @@
+//output: ../../../../../imports/ui/components/partyDetail/partyDetail.html
+p The party your selected is 
+form
+  |Party Name:
+  input(type="text" ng-model="partyDetail.party.name")
+  |Description:
+  input(type="text" ng-model="partyDetail.party.description")
+  |Public Party?
+  input(type='checkbox' ng-model='partyDetail.party.public')
+  button(ng-click='partyDetail.save()') Save
+
+button(ui-sref='parties') Back
+
+ul
+  |Users:
+  li(ng-repeat='user in partyDetail.users')
+    div {{user.emails[0].address}}

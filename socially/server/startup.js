@@ -2,7 +2,7 @@ var Meteor, Parties;
 
 Meteor = require('meteor/meteor').Meteor;
 
-Parties = require('../imports/api/parties.js').Parties;
+Parties = require('../imports/api/parties/index').Parties;
 
 Meteor.startup((function(_this) {
   return function() {

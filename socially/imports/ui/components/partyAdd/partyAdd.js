@@ -1,10 +1,12 @@
-var Parties, PartyAddCtrl, angular, angularMeteor, name;
+var Meteor, Parties, PartyAddCtrl, angular, angularMeteor, name;
 
 angular = require('angular');
 
+Meteor = require('meteor/meteor').Meteor;
+
 angularMeteor = require('angular-meteor');
 
-Parties = require('../../../api/parties').Parties;
+Parties = require('../../../api/parties/index').Parties;
 
 import template from './partyAdd.html';
 
@@ -14,8 +16,13 @@ PartyAddCtrl = (function() {
   }
 
   PartyAddCtrl.prototype.submit = function() {
-    Parties.insert(this.party);
-    return this.reset();
+    if (Meteor.user()) {
+      this.party.owner = Meteor.user()._id;
+      Parties.insert(this.party);
+      return this.reset();
+    } else {
+      return console.log("Not login");
+    }
   };
 
   PartyAddCtrl.prototype.reset = function() {
