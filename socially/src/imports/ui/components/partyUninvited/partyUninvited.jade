@@ -3,3 +3,4 @@ ul
   |Users:
   li(ng-repeat='user in partyUninvited.users | uninvitedFilter:partyUninvited.party')
     div {{user | displayNameFilter}}
+    button(ng-click='partyUninvited.invite(user)') Invite

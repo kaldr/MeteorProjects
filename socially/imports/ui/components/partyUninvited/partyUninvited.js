@@ -25,6 +25,18 @@ PartyUninvitedCtrl = (function() {
     });
   }
 
+  PartyUninvitedCtrl.prototype.invite = function(user) {
+    return Meteor.call('invite', this.party._id, user._id, (function(_this) {
+      return function(error) {
+        if (error) {
+          return console.log('Oops, unable to invite!');
+        } else {
+          return console.log('Invited');
+        }
+      };
+    })(this));
+  };
+
   return PartyUninvitedCtrl;
 
 })();

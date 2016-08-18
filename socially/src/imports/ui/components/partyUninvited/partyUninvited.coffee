@@ -13,6 +13,10 @@ class PartyUninvitedCtrl
         this.helpers {
             users:->Meteor.users.find()
         }
+    invite:(user)->
+        Meteor.call 'invite',this.party._id,user._id,(error)=>
+            if error then console.log 'Oops, unable to invite!' else console.log 'Invited' 
+
 name='partyUninvited'
 
 exports.PartyUninvited=angular.module name,[angularMeteor,UninvitedFilter,DisplayNameFilter]

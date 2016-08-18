@@ -31,12 +31,22 @@ if (Meteor.isServer) {
               }
             }
           ]
+        }, {
+          $and: [
+            {
+              invited: this.userId
+            }, {
+              invited: {
+                $exists: true
+              }
+            }
+          ]
         }
       ]
     };
     if (typeof searchString === 'string' && searchString.length) {
       selector.name = {
-        $regex: `.*${searchString}.*`,
+        $regex: /.*${searchString}.*/,
         $options: 'i'
       };
     }
