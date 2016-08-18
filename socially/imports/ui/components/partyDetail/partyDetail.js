@@ -1,4 +1,4 @@
-var Meteor, Parties, PartyDetailCtrl, angular, angularMeteor, config, name, uiRouter;
+var Meteor, Parties, PartyDetailCtrl, PartyUninvited, angular, angularMeteor, config, name, uiRouter;
 
 angular = require('angular');
 
@@ -9,6 +9,8 @@ uiRouter = require('angular-ui-router');
 Meteor = require('meteor/meteor').Meteor;
 
 Parties = require('../../../api/parties/index').Parties;
+
+PartyUninvited = require('../partyUninvited/partyUninvited').PartyUninvited;
 
 
 import template from './partyDetail.html'
@@ -76,7 +78,7 @@ config = function($stateProvider) {
   });
 };
 
-exports.PartyDetail = angular.module(name, [angularMeteor, uiRouter]).component(name, {
+exports.PartyDetail = angular.module(name, [angularMeteor, uiRouter, PartyUninvited]).component(name, {
   templateUrl: template,
   controllerAs: name,
   controller: PartyDetailCtrl

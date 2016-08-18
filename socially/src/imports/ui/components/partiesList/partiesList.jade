@@ -7,5 +7,6 @@ ul
     a(ui-sref='partyDetail({partyId:party._id})') {{party.name}}
     p {{party.description}}
     party-remove(party='party')
+    party-creator(party='party')
 
 dir-pagination-controls(on-page-change="partiesList.pageChanged(newPageNumber)")

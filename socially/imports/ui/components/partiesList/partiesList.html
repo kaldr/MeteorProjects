@@ -6,6 +6,7 @@
   <li dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount"><a ui-sref="partyDetail({partyId:party._id})">{{party.name}}</a>
     <p>{{party.description}}</p>
     <party-remove party="party"></party-remove>
+    <party-creator party="party"></party-creator>
   </li>
 </ul>
 <dir-pagination-controls on-page-change="partiesList.pageChanged(newPageNumber)"></dir-pagination-controls>

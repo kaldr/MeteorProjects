@@ -1,4 +1,4 @@
-var Counts, Parties, PartiesListCtrl, PartiesSort, PartyAdd, PartyRemove, angular, angularMeteor, config, name, uiRouter, utilsPagination;
+var Counts, Parties, PartiesListCtrl, PartiesSort, PartyAdd, PartyCreator, PartyRemove, angular, angularMeteor, config, name, uiRouter, utilsPagination;
 
 angular = require('angular');
 
@@ -18,6 +18,8 @@ PartyRemove = require('../partyRemove/partyRemove').PartyRemove;
 
 PartiesSort = require('../partiesSort/partiesSort').PartiesSort;
 
+PartyCreator = require("../partyCreator/partyCreator").PartyCreator;
+
 import templateUrl from './partiesList.html';
 
 PartiesListCtrl = (function() {
@@ -31,11 +33,11 @@ PartiesListCtrl = (function() {
     };
     this.searchText = '';
     this.subscribe('parties', () => [{
-        limit: parseInt(this.perPage),
-        skip: parseInt((this.getReactively('page') - 1) * this.perPage),
-        sort: this.getReactively('sort')
-      }, this.getReactively('searchText')
-    ]);
+            limit: parseInt(this.perPage),
+            skip: parseInt((this.getReactively('page') - 1) * this.perPage),
+            sort: this.getReactively('sort')
+        }, this.getReactively('searchText')
+    ]);;
     this.helpers({
       parties: function() {
         return Parties.find({}, {
@@ -70,7 +72,7 @@ config = function($stateProvider) {
 
 name = 'partiesList';
 
-exports.PartiesList = angular.module(name, [angularMeteor, uiRouter, PartyAdd, PartyRemove, PartiesSort, utilsPagination]).component(name, {
+exports.PartiesList = angular.module(name, [angularMeteor, uiRouter, PartyAdd, PartyRemove, PartiesSort, PartyCreator, utilsPagination]).component(name, {
   templateUrl: templateUrl,
   controllerAs: name,
   controller: PartiesListCtrl

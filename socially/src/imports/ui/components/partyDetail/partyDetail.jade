@@ -11,7 +11,4 @@ form
 
 button(ui-sref='parties') Back
 
-ul
-  |Users:
-  li(ng-repeat='user in partyDetail.users')
-    div {{user.emails[0].address}}
+party-uninvited(party='partyDetail.party')
