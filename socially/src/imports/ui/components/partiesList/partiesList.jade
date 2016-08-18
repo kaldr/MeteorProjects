@@ -1,7 +1,11 @@
 //output: ../../../../../imports/ui/components/partiesList/partiesList.html
 party-add
+input(type='search' ng-model="partiesList.searchText" placeholder='Search')
+parties-sort(on-change='partiesList.sortChanged(sort)' property="name" order="1")
 ul
-  li(ng-repeat="party in partiesList.parties")
+  li(dir-paginate="party in partiesList.parties | itemsPerPage: partiesList.perPage" total-items="partiesList.partiesCount")
     a(ui-sref='partyDetail({partyId:party._id})') {{party.name}}
     p {{party.description}}
     party-remove(party='party')
+
+dir-pagination-controls(on-page-change="partiesList.pageChanged(newPageNumber)")

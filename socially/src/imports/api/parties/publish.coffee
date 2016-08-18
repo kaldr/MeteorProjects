@@ -1,8 +1,9 @@
 {Meteor}=require 'meteor/meteor'
 {Parties}=require './collection'
+{Counts}=require 'meteor/tmeasday:publish-counts'
 
 if Meteor.isServer
-  Meteor.publish 'parties',()->
+  Meteor.publish 'parties',(options,searchString)->
     selector=
       $or:
         [
@@ -25,4 +26,10 @@ if Meteor.isServer
               }]
           }
         ]
-    Parties.find selector
+    if typeof searchStirng =='string' and searchString.length
+      selector.name={
+        $regex:///.*${searchString}.*///,
+        $options:'i'
+      }
+    Counts.publish this,'numberOfParties',Parties.find(selector),{noReady:true}
+    Parties.find selector,options

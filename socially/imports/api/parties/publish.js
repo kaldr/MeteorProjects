@@ -1,11 +1,13 @@
-var Meteor, Parties;
+var Counts, Meteor, Parties;
 
 Meteor = require('meteor/meteor').Meteor;
 
 Parties = require('./collection').Parties;
 
+Counts = require('meteor/tmeasday:publish-counts').Counts;
+
 if (Meteor.isServer) {
-  Meteor.publish('parties', function() {
+  Meteor.publish('parties', function(options, searchString) {
     var selector;
     selector = {
       $or: [
@@ -32,6 +34,15 @@ if (Meteor.isServer) {
         }
       ]
     };
-    return Parties.find(selector);
+    if (typeof searchStirng === 'string' && searchString.length) {
+      selector.name = {
+        $regex: `.*${searchString}.*`,
+        $options: 'i'
+      };
+    }
+    Counts.publish(this, 'numberOfParties', Parties.find(selector), {
+      noReady: true
+    });
+    return Parties.find(selector, options);
   });
 }
